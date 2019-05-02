@@ -7,7 +7,7 @@ import { Flex, Image } from "./";
 import styled from "styled-components";
 import Button from "./Button";
 import Variables from "./Variables";
-import Menu from "../utils/index";
+import { Menu } from "../utils/index";
 
 const SelectLanguage = styled.div`
   margin-left: 22px;

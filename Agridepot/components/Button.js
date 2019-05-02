@@ -6,6 +6,7 @@ const Button = styled.button`
     props.primary ? Variables.colors.black : Variables.colors.darkGreen};
   color: white;
   cursor: pointer;
+  float: ${props => (props.left ? "left" : null)};
 `;
 
 export default Button;
