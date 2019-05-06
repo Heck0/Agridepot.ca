@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
-import { Flex, Image } from "./";
+import { Flex, FlexItem, Image } from "./";
 import styled from "styled-components";
 import Button from "./Button";
 import Variables from "./Variables";
@@ -11,6 +11,13 @@ import { Menu } from "../utils/index";
 
 const SelectLanguage = styled.div`
   margin-left: 22px;
+
+  @media (max-width: 320px) {
+    font-size: 14px;
+  }
+  @media (max-width: 475px) {
+    width: 50%;
+  }
 `;
 const BusinessAccess = styled.div`
   background-color: black;
@@ -18,35 +25,89 @@ const BusinessAccess = styled.div`
   color: white;
   width: 216px;
   text-align: center;
-
+  @media (max-width: 475px) {
+    width: 50%;
+  }
   svg {
     margin-left: 10px;
+  }
+  button {
+    @media (max-width: 320px) {
+      font-size: 14px;
+    }
+  }
+  span {
+    @media (max-width: 475px) {
+      display: none;
+    }
   }
 `;
 
 const Logo = styled.div`
   width: 235px;
-`;
-const Grid = styled.div`
-  display: grid;
-  align-items: center;
-  grid-template-columns: 8fr 1fr 1fr;
-  height: 100px;
-  background-color: ${Variables.colors.darkGreen};
+  cursor: pointer;
 `;
 
-const GridSubMenu = styled.div`
+const MenuAgridepotNav = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  background-color: ${Variables.colors.darkGreen};
+  padding-left: 22px;
+
+  @media (max-width: 475px) {
+    justify-content: center;
+    margin-left: -22px;
+  }
+`;
+const IconeNavGroup = styled.div`
+  display: flex;
+  height: 100%;
+
+  @media (max-width: 475px) {
+    display: none;
+  }
+`;
+const IconeNav = styled.div`
+  cursor: pointer;
+  width: 108px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid ${Variables.colors.slimeGreen};
+
+  &:last-child {
+    background-color: ${Variables.colors.slimeGreen};
+  }
+`;
+const SubMenuAgridepotNav = styled.div`
   height: 50px;
   background-color: ${Variables.colors.black};
-  align-items: center;
-  color: white;
-  padding: 0 22px;
-  display: grid;
-  grid-template-columns: 7fr 3fr;
-  align-items: center;
-`;
-const GridItem = styled.div`
-  display: flex;
+
+  a {
+    text-decoration: none;
+  }
+  a:hover,
+  li:hover {
+    text-decoration: underline;
+  }
+  li {
+    padding-right: 20px;
+  }
+  & li {
+    cursor: pointer;
+  }
+  & > div:first-child {
+    padding-left: 22px;
+  }
+
+  @media (max-width: 475px) {
+    div > div:first-of-type a {
+      display: none;
+    }
+  }
 `;
 
 const ListItem = styled.ul`
@@ -71,7 +132,7 @@ class index extends Component {
             <Link href="/" prefetch>
               <Flex alignCenter justifyAround style={{ cursor: "pointer" }}>
                 <Button primary style={{ height: "40px" }}>
-                  BUSINESS ACCESS
+                  BUSINESS <span>ACCESS</span>
                 </Button>
                 <FaArrowRight style={{ color: "white", fontSize: "1.3em" }} />
               </Flex>
@@ -79,62 +140,54 @@ class index extends Component {
           </BusinessAccess>
         </Flex>
 
-        <Grid>
-          <GridItem>
-            <Logo style={{ marginLeft: "22px", cursor: "pointer" }}>
-              <Link href="/" prefetch>
-                <Image
-                  src="https://www.agridepot.ca/pub/static/version1555843020/frontend/Konnexion/agridepot/en_US/images/logo-2x.png"
-                  alt="Agridepot.ca"
-                />
-              </Link>
-            </Logo>
-          </GridItem>
-          <GridItem
-            style={{
-              justifySelf: "center"
-            }}
-          >
-            <Flex center>
+        <MenuAgridepotNav>
+          <Logo>
+            <Link href="/" prefetch>
+              <Image
+                src="https://www.agridepot.ca/pub/static/version1555843020/frontend/Konnexion/agridepot/en_US/images/logo-2x.png"
+                alt="Agridepot.ca"
+              />
+            </Link>
+          </Logo>
+
+          <IconeNavGroup>
+            <IconeNav>
               <Link href="/" prefetch>
                 <Image src="../static/icn-account.svg" alt="User Icone" />
               </Link>
-            </Flex>
-          </GridItem>
-          <GridItem
-            style={{
-              justifySelf: "center"
-            }}
-          >
-            <div>
+            </IconeNav>
+            <IconeNav>
               <Link href="/" prefetch>
                 <Image src="../static/icn-cart.svg" alt="User Cart" />
               </Link>
-            </div>
-          </GridItem>
-        </Grid>
-        <GridSubMenu>
-          <GridItem>
-            <Image
-              src="../static/icn-menu.svg"
-              alt="Menu"
-              style={{ width: "23px", height: "15px" }}
-            />
-            {/* <span>SHOP BY CATEGORIES</span> */}
-            <Link href="produits?page=1" prefetch>
-              <a style={{ color: "white" }}>SHOP BY CATEGORIES</a>
-            </Link>
-          </GridItem>
+            </IconeNav>
+          </IconeNavGroup>
+        </MenuAgridepotNav>
 
-          <ListItem>
-            {Menu &&
-              Menu.map(({ href, title }) => (
-                <Link key={title} href={href} prefetch>
-                  <li>{title}</li>
-                </Link>
-              ))}
-          </ListItem>
-        </GridSubMenu>
+        <SubMenuAgridepotNav>
+          <Flex full justifyBetween alignCenter>
+            <Flex alignCenter>
+              <Image
+                src="../static/icn-menu.svg"
+                alt="Menu"
+                style={{ width: "23px", height: "15px" }}
+              />
+              {/* <span>SHOP BY CATEGORIES</span> */}
+              <Link href="produits?page=1" prefetch>
+                <a style={{ color: "white" }}>SHOP BY CATEGORIES</a>
+              </Link>
+            </Flex>
+
+            <ListItem>
+              {Menu &&
+                Menu.map(({ href, title }) => (
+                  <Link key={title} href={href} prefetch>
+                    <li>{title}</li>
+                  </Link>
+                ))}
+            </ListItem>
+          </Flex>
+        </SubMenuAgridepotNav>
       </>
     );
   }

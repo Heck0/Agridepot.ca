@@ -26,6 +26,14 @@ const GlobalStyle = createGlobalStyle`
 li{
   list-style-type:none;
 }
+
+h2{
+font-size: 32px;
+@media (min-width: 475px) {
+    font-size: 65px;
+  }
+}
+
  &.wf-robotocondensed-n4-active.wf-robotocondensed-n7-active {
       h1,h2,h3,h4,h5,h6,button {
         font-family: Roboto Condensed, Arial, sans-serif;

@@ -9,6 +9,66 @@ export const Menu = [
   }
 ];
 
+export const AboutUs = [
+  {
+    href: "/find-seller",
+    title: "Find a seller"
+  },
+  {
+    href: "/contact-us",
+    title: "Contact us"
+  },
+  {
+    href: "/retailer-request",
+    title: "Retailer request"
+  },
+  {
+    href: "/gift-card",
+    title: "Gift card"
+  },
+  {
+    href: "/career",
+    title: "Career"
+  }
+];
+
+export const CustomerService = [
+  {
+    href: "/track-order",
+    title: "Track My Order"
+  },
+  {
+    href: "/start-a-return",
+    title: "Start a return"
+  },
+  {
+    href: "/return-policy",
+    title: "Return Policy"
+  },
+  {
+    href: "/report-damaged-item",
+    title: "Report a Damaged Item"
+  },
+  {
+    href: "/help-center",
+    title: "Help Center"
+  }
+];
+
+export const Payments = [
+  {
+    img: "../static/visa.svg",
+    title: "Visa"
+  },
+  {
+    img: "../static/mastercard.svg",
+    title: "MasterCard"
+  },
+  {
+    img: "../static/paypal.svg",
+    title: "PayPal"
+  }
+];
 export const ShopByType = [
   {
     href: "#",
